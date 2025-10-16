@@ -21,6 +21,8 @@ public:
 	friend void shop_sleep(shopClass& shop);
 	friend void show_shop(shopClass & shop, person& pers);
 
+	friend void taxes(shopClass& shop, person& pers);
+
 	shopClass operator += (float n);
 };
 

@@ -20,6 +20,8 @@ public:
 	friend void to_work(person& p);
 
 	friend void show_shop(shopClass& shop, person& pers);
+
+	friend void taxes(shopClass& shop, person& pers);
 	
 
 	person operator -= (float n);

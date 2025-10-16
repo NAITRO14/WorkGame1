@@ -42,12 +42,13 @@ int work_act(short wpd, person& pers)
 	return wpd;
 }
 
-int sleep_act(int wpd, shopClass & shop)
+int sleep_act(int wpd, shopClass & shop, person& pers)
 {
 	cout << "Наступает новый день, вы полны сил!" << endl;
 	wpd = 0;
 
 	shop_sleep(shop);
+	taxes(shop, pers);
 	return wpd;
 }
 
@@ -126,3 +127,13 @@ void show_shop(shopClass& shop, person& pers)
 		}
 	}
 }
+
+void taxes(shopClass& shop, person& pers)
+{
+	pers.rub -= pers.rub * 0.15;
+	shop.rub -= shop.rub * 0.15;
+
+	cout << "Налоги были вычтены . . ." << endl;
+}
+
+

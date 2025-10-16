@@ -29,7 +29,7 @@ int main()
 		}break;
 		case 3:
 		{
-			works_per_day = sleep_act(works_per_day, shop);
+			works_per_day = sleep_act(works_per_day, shop, pers);
 		}break;
 		}
 		system("pause");
