@@ -3,11 +3,11 @@
 
 void person::print_money()
 {
-	cout << rub << "." << pen << endl;
+	cout << money;
 }
 
 person person::operator-=(float n)
 {
-	rub -= n;
+	money -= n;
 	return person();
 }

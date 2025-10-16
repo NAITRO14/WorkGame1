@@ -3,8 +3,7 @@
 
 shopClass::shopClass()
 {
-	rub = 50000;
-	pen = 0;
+	money = 30000;
 	bread_cost = rand() % 20 + 50;
 	meat_cost = rand() % 1000 + 2000;
 
@@ -25,12 +24,12 @@ int shopClass::get_m()
 
 void shopClass::print_money()
 {
-	cout << "Денег у магазина: " << rub << "." << pen << endl;
+	cout << "Денег у магазина: " << money << endl;
 }
 
 shopClass shopClass::operator+=(float n)
 {
-	rub += n;
+	money += n;
 
 	return shopClass();
 }

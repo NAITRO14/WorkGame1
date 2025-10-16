@@ -28,4 +28,6 @@ void shop_sleep(shopClass& shop);
 
 void taxes(shopClass & shop, person& pers);
 
+bool isGameLost(person& pers, shopClass& shop);
+
 //main header

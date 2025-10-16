@@ -17,13 +17,11 @@ void enter_num(short& num)
 
 void to_work(person& p)
 {
-	short rtmp = rand() % 1001 + 500;
-	/*short ptmp = rand() % 100 + 1;*/
-	short ptmp = 0;
-	p.rub += rtmp;
-	p.pen += ptmp;
+	float mtmp = (rand() % 1001 + 500) + (rand() % 99 + 1)/10.0;
 
-	cout << "Заработано: " << rtmp << "." << ptmp << endl;
+	p.money += mtmp;
+
+	cout << "Заработано: " << mtmp << endl;
 	
 }
 
@@ -32,7 +30,6 @@ int work_act(short wpd, person& pers)
 	if (wpd < 3)
 	{
 		to_work(pers);
-		pers.print_money();
 		wpd++;
 	}
 	else
@@ -92,6 +89,12 @@ void show_shop(shopClass& shop, person& pers)
 			cout << "Сколько вам ?" << endl;
 			cout << "Ввод: "; enter_num(count);
 
+			if (count * shop.bread_cost > pers.money)
+			{
+				cout << "Кажется, у меня не хватит на это денег . . ." << endl;
+				continue;
+			}
+
 			if (count <= shop.bread_count)
 			{
 				shop.bread_count -= count;
@@ -110,6 +113,13 @@ void show_shop(shopClass& shop, person& pers)
 			if (shop.meat_count == 0) { cout << "Больше нет, приходи завтра, может, завезут" << endl; continue; }
 			cout << "Сколько вам ?" << endl;
 			cout << "Ввод: "; enter_num(count);
+
+			if (count * shop.meat_cost > pers.money)
+			{
+				cout << "Кажется, у меня не хватит на это денег . . ." << endl;
+				system("pause");
+				continue;
+			}
 
 			if (count <= shop.meat_count)
 			{
@@ -130,10 +140,32 @@ void show_shop(shopClass& shop, person& pers)
 
 void taxes(shopClass& shop, person& pers)
 {
-	pers.rub -= pers.rub * 0.15;
-	shop.rub -= shop.rub * 0.15;
+	float persTax = (rand() % 10 + 1)/10.0;
+	float shopTax = (rand() % 10 + 1)/10.0;
 
-	cout << "Налоги были вычтены . . ." << endl;
+	pers.money -= 1000 * persTax;
+	shop.money -= 5000 * shopTax;
+
+	cout << "Ваш налог на сегодня составил " << 1000 * persTax << " руб." << endl;
+}
+
+bool isGameLost(person& pers, shopClass& shop)
+{
+	if (pers.money < 0)
+	{
+		system("cls");
+		cout << "Вы разорились! У вас больше нет денег, чтобы завплатить за еду или налоги" << endl;
+		return true;
+	}
+
+	if (shop.money < 0)
+	{
+		system("cls");
+		cout << "Единственный магазин в вашем городе разорился! Он не мог больше содержаться и закрылся. Через время вы умерли от голода . . ." << endl;
+		return true;
+	}
+
+	return false;
 }
 
 
