@@ -12,6 +12,7 @@ int main()
 	while (true)
 	{
 		system("cls");
+		cout << "Денег в кошельке: "; pers.print_money();
 		cout << "1|Поработать\n2|Пойти в магазин\n3|Лечь спать" << endl;
 		cout << "Выбирете действие: "; enter_num(man);
 
@@ -19,26 +20,16 @@ int main()
 		{
 		case 1:
 		{
-			if (works_per_day < 3)
-			{
-				to_work(pers);
-				pers.print_money();
-				works_per_day++;
-			}
-			else
-			{
-				cout << "Вы очень устали и больше не можете работать. . ." << endl;
-			}
 			
+			works_per_day = work_act(works_per_day, pers);
 		}break;
 		case 2:
 		{
-			cout << "case 2" << endl;
+			show_shop(shop, pers);
 		}break;
 		case 3:
 		{
-			cout << "Вы легли спать и на утро чувтсвуете, что отдохнули очень хорошо" << endl;
-			works_per_day = 0;
+			works_per_day = sleep_act(works_per_day, shop);
 		}break;
 		}
 		system("pause");

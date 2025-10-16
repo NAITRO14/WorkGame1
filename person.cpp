@@ -3,5 +3,11 @@
 
 void person::print_money()
 {
-	cout << "Денег у Игрока: " << rub << "." << pen << endl;
+	cout << rub << "." << pen << endl;
+}
+
+person person::operator-=(float n)
+{
+	rub -= n;
+	return person();
 }
