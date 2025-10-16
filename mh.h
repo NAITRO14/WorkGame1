@@ -1,4 +1,5 @@
 #pragma once
+#define NOMINMAX
 #include <windows.h>
 #include <iomanip>
 #include <iostream>
@@ -15,5 +16,7 @@ class baseClass
 	int get_m();
 	void print_money();
 };
+
+void enter_num(short& num);
 
 //main header

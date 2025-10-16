@@ -12,5 +12,5 @@ public:
 	int get_b();
 	int get_m();
 	void print_money();
-}man;
+};
 
