@@ -1,8 +1,7 @@
 #include "person.h"
+#include "mh.h"
 
-person::person()
+void person::print_money()
 {
-	rub = 100; pen = 0;
-	bread_count = 0; meat_count = 0;
-
+	cout << "Денег у Игрока: " << rub << "." << pen << endl;
 }

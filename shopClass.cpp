@@ -2,7 +2,7 @@
 
 shopClass::shopClass()
 {
-	rub = 5000;
+	rub = 50000;
 	pen = 0;
 
 	bread_count = rand() % 5 + 1;

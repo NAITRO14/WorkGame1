@@ -1,22 +1,20 @@
 #pragma once
+
+//основные инклуды
 #define NOMINMAX
 #include <windows.h>
 #include <iomanip>
 #include <iostream>
 
+//включаемые файлы
+#include "person.h"
+#include "shopClass.h"
+
 using namespace std;
 
-class baseClass
-{
-	int rub; int pen;
-	short bread_count;
-	short meat_count;
-
-	int get_b();
-	int get_m();
-	void print_money();
-};
 
 void enter_num(short& num);
+
+void to_work(person& p);
 
 //main header

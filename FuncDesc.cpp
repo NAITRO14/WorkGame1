@@ -14,3 +14,14 @@ void enter_num(short& num)
 		}
 	}
 }
+
+void to_work(person& p)
+{
+	short rtmp = rand() % 4001 + 1000;
+	short ptmp = rand() % 100 + 1;
+	p.rub += rtmp;
+	p.pen += ptmp;
+
+	cout << "Заработано: " << rtmp << "." << ptmp << endl;
+	
+}

@@ -8,11 +8,8 @@ class shopClass
 	short meat_count;
 
 public:
-	struct goods
-	{
-		string bread;
-		string meat;
-	};
+	
+	
 
 	shopClass();
 

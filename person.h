@@ -1,4 +1,6 @@
 #pragma once
+
+
 class person
 {
 	int rub; int pen;
@@ -7,10 +9,14 @@ class person
 
 public:
 
-	person();
+	person() : rub(100), pen(0), bread_count(0), meat_count(0){}
 
 	int get_b();
 	int get_m();
 	void print_money();
+
+	//друзья
+	friend void to_work(person& p);
+	
 };
 
