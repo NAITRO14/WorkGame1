@@ -21,8 +21,8 @@ void BankClass::taxes(shopClass& shop, person& pers)
 
 float BankClass::salary()
 {
-	float sal = (rand() % 1501 + 500) + (rand() % 99 + 1) / 10.0f;
-	money -= sal; // выплатить днбги за работу
+	float sal = (rand() % 1801 + 700) + (rand() % 99 + 1) / 10.0f;
+	money -= sal; // выплатить деньги за работу
 
 	return sal;
 }

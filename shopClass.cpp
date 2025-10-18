@@ -5,13 +5,13 @@ shopClass::shopClass()
 {
 	money = 20000;
 	//небольшой разброс цен на каждый день
-	bread_cost = rand() % 20 + 50;
-	meat_cost = rand() % 1000 + 2000;
-	lemonade_cost = rand() % 50 + 70;
+	bread_cost = rand() % 50 + 70;
+	meat_cost = rand() % 2000 + 2500;
+	lemonade_cost = rand() % 100 + 120;
 
 	//товара может и не быть вообще
 	lemonade_count = rand() % 11;
-	bread_count = rand() % 6;
+	bread_count = rand() % 9;
 	meat_count = rand() % 6;
 
 	BankClass::companies++;

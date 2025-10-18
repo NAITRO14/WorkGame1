@@ -23,7 +23,14 @@ int main()
 		
 		cout << "Денег в кошельке: "; pers.print_money(); cout << "    День: " << day; cout << "    Денег у банка: " << bank.get_money() << endl;
 		cout << "1|Поработать\n2|Пойти в магазин\n3|Лечь спать\n4|Открыть рюкзак" << endl;
-		cout << "Выбирете действие: "; enter_num(man);
+		
+		SetColor(DarkGray, 0);
+		cout << "----------------" << endl;
+		cout << "1-4 -- выбрать действие" << endl;
+		cout << "----------------" << endl;
+		SetColor(15, 0);
+
+		cout << "Ввод: "; enter_num(man);
 
 		switch (man)
 		{
@@ -38,23 +45,18 @@ int main()
 		}break;
 		case 3:
 		{
-			if (!sleep_act(shop, pers))
-			{
-				isIn = 0;
-				SetColor(4, 0); cout << "Вы не поели сегодня и умерли от истощения" << endl; SetColor(15, 0);
-				continue;
-			}
+			sleep_act(shop, pers);
 			bank.taxes(shop, pers);
-			if (isGameLost(pers, shop))
-			{
-				isIn = false;
-			}
+			isIn = isGameLost(pers, shop);
+
 			works_per_day = 0;
 			day++;
+			continue;
 		}break;
 		case 4:
 		{
-			pers.show_inv();
+			pers.show_inv(1);
+			continue;
 		}break;
 		}
 		system("pause");

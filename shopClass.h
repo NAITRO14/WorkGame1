@@ -23,8 +23,8 @@ public:
 	int get_money();
 
 	//друг
-	friend void shop_sleep(shopClass& shop);
-	friend void show_shop(shopClass & shop, person& pers);
+	friend void sleep_act(shopClass& shop, person& pers);
+	friend void show_shop(shopClass& shop, person& pers);
 	friend bool isGameLost(person& pers, shopClass& shop);
 	/*friend ostream& operator << (ostream& os, shopClass& shop);*/
 

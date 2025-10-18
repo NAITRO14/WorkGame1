@@ -7,6 +7,8 @@ class person
 {
 	float money;
 
+	bool isHungry;
+
 	short bread_count;
 	short meat_count;
 	short lemonade_count;
@@ -16,14 +18,13 @@ public:
 	person();
 
 	//геттеры
-	int get_b();
-	int get_m();
+	bool get_hunger();
 	void print_money();
 
 	//функции персоны
 	void to_work(person& p, BankClass& bank);
-	bool show_inv();
-	bool to_eat();
+	void show_inv(short mang);
+	void to_eat(short mang);
 
 	//друзья
 	friend void show_shop(shopClass& shop, person& pers);
