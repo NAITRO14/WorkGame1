@@ -123,12 +123,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BankClass.cpp" />
     <ClCompile Include="FuncDesc.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="person.cpp" />
     <ClCompile Include="shopClass.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BankClass.h" />
     <ClInclude Include="mh.h" />
     <ClInclude Include="person.h" />
     <ClInclude Include="shopClass.h" />

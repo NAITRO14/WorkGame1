@@ -15,21 +15,11 @@ void enter_num(short& num)
 	}
 }
 
-void to_work(person& p)
-{
-	float mtmp = (rand() % 1001 + 500) + (rand() % 99 + 1)/10.0;
-
-	p.money += mtmp;
-
-	cout << "Заработано: " << mtmp << endl;
-	
-}
-
-int work_act(short wpd, person& pers)
+int work_act(short wpd, person& pers, BankClass& bank)
 {
 	if (wpd < 3)
 	{
-		to_work(pers);
+		pers.to_work(pers, bank);
 		wpd++;
 	}
 	else
@@ -45,7 +35,6 @@ int sleep_act(int wpd, shopClass & shop, person& pers)
 	wpd = 0;
 
 	shop_sleep(shop);
-	taxes(shop, pers);
 	return wpd;
 }
 
@@ -53,6 +42,11 @@ void shop_sleep(shopClass& shop)
 {
 	shop.bread_count = rand() % 5 + 1;
 	shop.meat_count = rand() % 5 + 1;
+	shop.lemonade_count = rand() % 11;
+
+	shop.bread_cost = rand() % 20 + 50;
+	shop.meat_cost = rand() % 1000 + 2000;
+	shop.lemonade_cost = rand() % 50 + 70;
 
 	cout << "Интересно, что нового в магазине . . ." << endl;
 }
@@ -68,10 +62,11 @@ void show_shop(shopClass& shop, person& pers)
 
 		cout << "1|Хлеб: " << shop.bread_count << " | Стоимость: " << shop.bread_cost << endl;
 		cout << "2|Мясо: " << shop.meat_count << " | Стоимость: " << shop.meat_cost << endl;
+		cout << "3|Лимонад: " << shop.lemonade_count << " | Стоимость: " << shop.lemonade_cost << endl;
 		
 		cout << "--------------------" << endl;
 		cout << "Хотите купить что-то?" << endl;
-		cout << "1-2 -- купить товар" << endl;
+		cout << "1-3 -- купить товар" << endl;
 		cout << "0 -- уйти" << endl;
 		cout << "--------------------" << endl;
 
@@ -98,8 +93,8 @@ void show_shop(shopClass& shop, person& pers)
 			if (count <= shop.bread_count)
 			{
 				shop.bread_count -= count;
-				pers -= shop.bread_cost;
-				shop += shop.bread_cost;
+				pers -= shop.bread_cost * count;
+				shop += shop.bread_cost * count;
 			}
 			else
 			{
@@ -124,8 +119,8 @@ void show_shop(shopClass& shop, person& pers)
 			if (count <= shop.meat_count)
 			{
 				shop.meat_count -= count;
-				pers -= shop.meat_cost;
-				shop += shop.meat_cost;
+				pers -= shop.meat_cost * count;
+				shop += shop.meat_cost * count;
 			}
 			else
 			{
@@ -134,19 +129,33 @@ void show_shop(shopClass& shop, person& pers)
 			}
 
 		}break;
+		case 3:
+		{
+			if (shop.lemonade_count == 0) { cout << "Больше нет, приходи завтра, может, завезут" << endl; continue; }
+			cout << "Сколько вам ?" << endl;
+			cout << "Ввод: "; enter_num(count);
+
+			if (count * shop.lemonade_cost > pers.money)
+			{
+				cout << "Кажется, у меня не хватит на это денег . . ." << endl;
+				continue;
+			}
+
+			if (count <= shop.lemonade_count)
+			{
+				shop.lemonade_count -= count;
+				pers -= shop.lemonade_cost * count;
+				shop += shop.lemonade_cost * count;
+			}
+			else
+			{
+				cout << "Столько нет. Могу предложить только " << shop.bread_count << endl;
+				system("pause");
+			}
+
+		}break;
 		}
 	}
-}
-
-void taxes(shopClass& shop, person& pers)
-{
-	float persTax = (rand() % 10 + 1)/10.0;
-	float shopTax = (rand() % 10 + 1)/10.0;
-
-	pers.money -= 1000 * persTax;
-	shop.money -= 5000 * shopTax;
-
-	cout << "Ваш налог на сегодня составил " << 1000 * persTax << " руб." << endl;
 }
 
 bool isGameLost(person& pers, shopClass& shop)
@@ -167,5 +176,7 @@ bool isGameLost(person& pers, shopClass& shop)
 
 	return false;
 }
+
+
 
 
