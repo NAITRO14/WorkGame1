@@ -13,6 +13,8 @@ public:
 	BankClass();
 	//геттеры
 	float get_money();
+	int get_clint();
+	int get_comp();
 
 	//функции банка
 	void taxes(shopClass& shop, person& pers);

@@ -6,9 +6,10 @@ class shopClass;
 class person
 {
 	float money;
+
 	short bread_count;
 	short meat_count;
-	short lemonade_count = 0;
+	short lemonade_count;
 
 public:
 
@@ -21,6 +22,8 @@ public:
 
 	//функции персоны
 	void to_work(person& p, BankClass& bank);
+	void show_inv();
+	bool to_eat();
 
 	//друзья
 	friend void show_shop(shopClass& shop, person& pers);

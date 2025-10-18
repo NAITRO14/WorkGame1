@@ -10,18 +10,19 @@ int BankClass::companies = 0;
 int main()
 {
 	setlocale(LC_ALL, "ru"); srand(time(NULL));
+	SetConsoleCP(1251); SetConsoleOutputCP(1251);
 
 	shopClass shop; person pers; BankClass bank;
 	short man; short works_per_day = 0;
 	short day = 0; bool isIn = 1;
+	
+
 	while (isIn)
 	{
 		system("cls");
 		
-		
-
 		cout << "Денег в кошельке: "; pers.print_money(); cout << "    День: " << day; cout << "    Денег у банка: " << bank.get_money() << endl;
-		cout << "1|Поработать\n2|Пойти в магазин\n3|Лечь спать" << endl;
+		cout << "1|Поработать\n2|Пойти в магазин\n3|Лечь спать\n4|Открыть рюкзак" << endl;
 		cout << "Выбирете действие: "; enter_num(man);
 
 		switch (man)
@@ -44,6 +45,10 @@ int main()
 				isIn = false;
 			}
 			day++;
+		}break;
+		case 4:
+		{
+			pers.show_inv();
 		}break;
 		}
 		system("pause");

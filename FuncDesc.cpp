@@ -7,7 +7,7 @@ void enter_num(short& num)
 			break;         // выйти из цикла
 		}
 		else {
-			cout << "Ошибка ввода. Введите число заново." << endl;
+			SetColor(4, 0); cout << "Ошибка ввода. Введите число заново." << endl; SetColor(15, 0);
 			cout << "Ввод: ";
 			cin.clear(); // очистка ошибки
 			cin.ignore(numeric_limits<streamsize>::max(), '\n'); // очистить буфер
@@ -24,14 +24,15 @@ int work_act(short wpd, person& pers, BankClass& bank)
 	}
 	else
 	{
-		cout << "Вы очень устали и больше не можете работать. . ." << endl;
+		SetColor(4, 0); cout << "Вы очень устали и больше не можете работать. . ." << endl; SetColor(15, 0);
 	}
 	return wpd;
 }
 
 int sleep_act(int wpd, shopClass & shop, person& pers)
 {
-	cout << "Наступает новый день, вы полны сил!" << endl;
+	pers.show_inv(); system("cls");
+	SetColor(2, 0); cout << "Наступает новый день, вы полны сил!" << endl; SetColor(15, 0);
 	wpd = 0;
 
 	shop_sleep(shop);
@@ -48,7 +49,7 @@ void shop_sleep(shopClass& shop)
 	shop.meat_cost = rand() % 1000 + 2000;
 	shop.lemonade_cost = rand() % 50 + 70;
 
-	cout << "Интересно, что нового в магазине . . ." << endl;
+	SetColor(14, 0); cout << "Интересно, что нового в магазине . . ." << endl; SetColor(15, 0);
 }
 
 void show_shop(shopClass& shop, person& pers)
@@ -64,11 +65,13 @@ void show_shop(shopClass& shop, person& pers)
 		cout << "2|Мясо: " << shop.meat_count << " | Стоимость: " << shop.meat_cost << endl;
 		cout << "3|Лимонад: " << shop.lemonade_count << " | Стоимость: " << shop.lemonade_cost << endl;
 		
+		SetColor(8, 0);
 		cout << "--------------------" << endl;
 		cout << "Хотите купить что-то?" << endl;
 		cout << "1-3 -- купить товар" << endl;
 		cout << "0 -- уйти" << endl;
 		cout << "--------------------" << endl;
+		SetColor(15, 0);
 
 		cout << "Ввод: ";
 		enter_num(man);
@@ -93,6 +96,8 @@ void show_shop(shopClass& shop, person& pers)
 			if (count <= shop.bread_count)
 			{
 				shop.bread_count -= count;
+				pers.bread_count += count;
+
 				pers -= shop.bread_cost * count;
 				shop += shop.bread_cost * count;
 			}
@@ -119,6 +124,8 @@ void show_shop(shopClass& shop, person& pers)
 			if (count <= shop.meat_count)
 			{
 				shop.meat_count -= count;
+				pers.meat_count += count;
+
 				pers -= shop.meat_cost * count;
 				shop += shop.meat_cost * count;
 			}
@@ -144,6 +151,8 @@ void show_shop(shopClass& shop, person& pers)
 			if (count <= shop.lemonade_count)
 			{
 				shop.lemonade_count -= count;
+				pers.lemonade_count += count;
+
 				pers -= shop.lemonade_cost * count;
 				shop += shop.lemonade_cost * count;
 			}
@@ -163,14 +172,14 @@ bool isGameLost(person& pers, shopClass& shop)
 	if (pers.money < 0)
 	{
 		system("cls");
-		cout << "Вы разорились! У вас больше нет денег, чтобы завплатить за еду или налоги" << endl;
+		SetColor(4, 0); cout << "Вы разорились! У вас больше нет денег, чтобы завплатить за еду или налоги" << endl; SetColor(15, 0);
 		return true;
 	}
 
 	if (shop.money < 0)
 	{
 		system("cls");
-		cout << "Единственный магазин в вашем городе разорился! Он не мог больше содержаться и закрылся. Через время вы умерли от голода . . ." << endl;
+		SetColor(4, 0); cout << "Единственный магазин в вашем городе разорился! Он не мог больше содержаться и закрылся. Через время вы умерли от голода . . ." << endl; SetColor(15, 0);
 		return true;
 	}
 
