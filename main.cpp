@@ -38,12 +38,18 @@ int main()
 		}break;
 		case 3:
 		{
-			works_per_day = sleep_act(works_per_day, shop, pers);
+			if (!sleep_act(shop, pers))
+			{
+				isIn = 0;
+				SetColor(4, 0); cout << "Вы не поели сегодня и умерли от истощения" << endl; SetColor(15, 0);
+				continue;
+			}
 			bank.taxes(shop, pers);
 			if (isGameLost(pers, shop))
 			{
 				isIn = false;
 			}
+			works_per_day = 0;
 			day++;
 		}break;
 		case 4:

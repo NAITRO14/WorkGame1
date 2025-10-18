@@ -22,7 +22,7 @@ public:
 
 	//функции персоны
 	void to_work(person& p, BankClass& bank);
-	void show_inv();
+	bool show_inv();
 	bool to_eat();
 
 	//друзья

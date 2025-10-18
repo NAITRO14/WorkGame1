@@ -29,14 +29,18 @@ int work_act(short wpd, person& pers, BankClass& bank)
 	return wpd;
 }
 
-int sleep_act(int wpd, shopClass & shop, person& pers)
+bool sleep_act(shopClass & shop, person& pers)
 {
-	pers.show_inv(); system("cls");
+	if (!pers.show_inv())
+	{
+		system("cls");
+		return 0;
+	}
+	system("cls");
 	SetColor(2, 0); cout << "Наступает новый день, вы полны сил!" << endl; SetColor(15, 0);
-	wpd = 0;
 
 	shop_sleep(shop);
-	return wpd;
+	return 1;
 }
 
 void shop_sleep(shopClass& shop)

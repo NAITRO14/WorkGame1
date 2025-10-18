@@ -25,7 +25,7 @@ void person::to_work(person& p, BankClass& bank)
 	cout << "Заработано: "; SetColor(2, 0); cout << mtmp << endl; SetColor(15, 0);
 }
 
-void person::show_inv()
+bool person::show_inv()
 {
 	bool isEmpty = 0;
 	system("cls");
@@ -45,35 +45,47 @@ void person::show_inv()
 		cout << "Лимонад: " << lemonade_count << endl;
 		isEmpty = 1;
 	}
+
 	if (isEmpty)
 	{
-		to_eat();
+		return to_eat();
 	}
+	return false;
 }
 
 bool person::to_eat()
 {
-	string inp; bool ate = 0;
-	cout << "Введите название предмета, чтобы съесть" << endl;
-	cout << "Ввод: ";
-	cin >> inp;
+	string inp;bool isIn = 1;
+	while (true)
+	{
+		cout << "Введите название предмета, чтобы съесть" << endl;
+		cout << "Ввод: ";
+		cin >> inp;
 
-	if (inp == "Хлеб" or inp == "хлеб")
-	{
-		bread_count--;
-		ate = 1;
+		if (inp == "Хлеб" or inp == "хлеб")
+		{
+			bread_count--;
+			return 1;
+		}
+		else if (inp == "Мясо" or inp == "мясо")
+		{
+			meat_count--;
+			return 1;
+		}
+		else if (inp == "Лимонад" or inp == "лимонад")
+		{
+			lemonade_count--;
+			return 1;
+		}
+		else
+		{
+			cout << "Повторите ввод" << endl;
+			system("pause");
+			continue;
+		}
 	}
-	else if (inp == "Мясо" or inp == "мясо")
-	{
-		meat_count--;
-		ate = 1;
-	}
-	else if (inp == "Лимонад" or inp == "лимонад")
-	{
-		lemonade_count--;
-		ate = 1;
-	}
-	return ate;
+	
+	return 0;
 }
 
 person person::operator-=(float n)

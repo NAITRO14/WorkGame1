@@ -31,7 +31,7 @@ void enter_num(short& num);
 
 //функции действий
 int work_act(short wpd, person& pers, BankClass& bank);
-int sleep_act(int wpd, shopClass & shop, person& pers);
+bool sleep_act(shopClass & shop, person& pers);
 void shop_sleep(shopClass& shop);
 
 bool isGameLost(person& pers, shopClass& shop);
