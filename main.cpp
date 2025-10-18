@@ -51,7 +51,7 @@ int main()
 
 			works_per_day = 0;
 			day++;
-			continue;
+			
 		}break;
 		case 4:
 		{

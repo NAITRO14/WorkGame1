@@ -3,10 +3,10 @@
 
 person::person()
 {
-	money = 1000;
+	money = 1500;
 
 	//продукты
-	bread_count = 0;
+	bread_count = 1;
 	meat_count = 0;
 	lemonade_count = 0;
 
