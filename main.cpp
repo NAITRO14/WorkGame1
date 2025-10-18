@@ -3,6 +3,10 @@
 #include "person.h"
 #include "BankClass.h"
 
+int BankClass::clients = 0;
+int BankClass::companies = 0;
+
+
 int main()
 {
 	setlocale(LC_ALL, "ru"); srand(time(NULL));

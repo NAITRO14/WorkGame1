@@ -29,8 +29,11 @@ void shop_sleep(shopClass& shop);
 
 //void show_shop();
 
-
-
 bool isGameLost(person& pers, shopClass& shop);
+
+void set_color(int color) {
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, color);
+}
 
 //main header

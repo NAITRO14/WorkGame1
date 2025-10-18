@@ -8,19 +8,21 @@ class person
 	float money;
 	short bread_count;
 	short meat_count;
+	short lemonade_count = 0;
 
 public:
 
-	person() : money(100.0), bread_count(0), meat_count(0){}
+	person();
 
+	//геттеры
 	int get_b();
 	int get_m();
 	void print_money();
 
+	//функции персоны
 	void to_work(person& p, BankClass& bank);
 
 	//друзья
-	
 	friend void show_shop(shopClass& shop, person& pers);
 	friend bool isGameLost(person& pers, shopClass& shop);
 

@@ -2,13 +2,13 @@
 
 BankClass::BankClass()
 {
-	money = 60000.0;
+	money = 40000.0;
 }
 
 void BankClass::taxes(shopClass& shop, person& pers)
 {
-	float persTax = ((rand() % 10 + 1) / 10.0) * 1000;
-	float shopTax = ((rand() % 10 + 1) / 10.0) * 5000;
+	float persTax = ((rand() % 10 + 1) / 10.0f) * 1000.0f;
+	float shopTax = ((rand() % 10 + 1) / 10.0f) * 5000.0f;
 
 	pers.money -= persTax;
 	shop.money -= shopTax;
@@ -21,7 +21,7 @@ void BankClass::taxes(shopClass& shop, person& pers)
 
 float BankClass::salary()
 {
-	float sal = (rand() % 1501 + 500) + (rand() % 99 + 1) / 10.0;
+	float sal = (rand() % 1501 + 500) + (rand() % 99 + 1) / 10.0f;
 	money -= sal; // выплатить днбги за работу
 
 	return sal;

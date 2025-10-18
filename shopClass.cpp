@@ -3,7 +3,7 @@
 
 shopClass::shopClass()
 {
-	money = 30000;
+	money = 20000;
 	//небольшой разброс цен на каждый день
 	bread_cost = rand() % 20 + 50;
 	meat_cost = rand() % 1000 + 2000;
@@ -14,6 +14,7 @@ shopClass::shopClass()
 	bread_count = rand() % 6;
 	meat_count = rand() % 6;
 
+	BankClass::companies++;
 }
 
 int shopClass::get_b()

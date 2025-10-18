@@ -1,6 +1,16 @@
 #include "person.h"
 #include "mh.h"
 
+person::person()
+{
+	money = 1000;
+	bread_count = 0;
+	meat_count = 0;
+	lemonade_count = 0;
+
+	BankClass::clients++;
+}
+
 void person::print_money()
 {
 	cout << money;
