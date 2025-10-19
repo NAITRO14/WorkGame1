@@ -7,13 +7,13 @@ class person;
 class shopClass
 {
 	float money;
-	short bread_count; short bread_cost;
+	short bread_count; float bread_cost;
 
-	short lemonade_count; short lemonade_cost;
+	short lemonade_count; float lemonade_cost;
 
-	short meat_count; short meat_cost;
+	short meat_count; float meat_cost;
 
-	short coffe_count; short coffe_cost;
+	short coffe_count; float coffe_cost;
 
 public:
 	

@@ -25,6 +25,7 @@ public:
 	//геттеры
 	bool get_hunger();
 	void print_money();
+	int get_ex();
 
 	//функции персоны
 	void to_work(person& p, BankClass& bank);

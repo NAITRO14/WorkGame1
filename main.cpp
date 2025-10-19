@@ -22,7 +22,8 @@ int main()
 		system("cls");
 		
 		cout << "Денег в кошельке: "; pers.print_money(); cout << "    День: " << day; cout << "    Денег у банка: " << bank.get_money() << endl;
-		cout << "1|Поработать\n2|Пойти в магазин\n3|Лечь спать\n4|Открыть рюкзак" << endl;
+		cout << "1|Поработать "; cout << "["; if (pers.get_ex() < 3) { for (short i = 3; i > pers.get_ex(); i--) { cout << " # "; } } else {cout << " ! "; } cout << "]";
+		cout << "\n2|Пойти в магазин\n3|Лечь спать\n4|Открыть рюкзак" << endl;
 		
 		SetColor(DarkGray, 0);
 		cout << "----------------" << endl;

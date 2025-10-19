@@ -52,10 +52,10 @@ void sleep_act(shopClass & shop, person& pers)
 		}
 	}
 
-	shop.bread_cost = rand() % 20 + 50;
-	shop.meat_cost = rand() % 1000 + 2000;
-	shop.lemonade_cost = rand() % 50 + 70;
-	shop.coffe_cost = rand() % 150 + 450;
+	shop.bread_cost = rand() % 20 + 50.0f;
+	shop.meat_cost = rand() % 1000 + 2000.0f;
+	shop.lemonade_cost = rand() % 50 + 70.0f;
+	shop.coffe_cost = rand() % 150 + 450.0f;
 
 	
 	pers.exLvl = 0;
@@ -196,8 +196,8 @@ void show_shop(shopClass& shop, person& pers)
 				shop.coffe_count -= count;
 				pers.coffe_count += count;
 
-				pers -= shop.coffe_count * count;
-				shop += shop.coffe_count * count;
+				pers -= shop.coffe_cost * count;
+				shop += shop.coffe_cost * count;
 			}
 			else
 			{

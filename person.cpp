@@ -5,6 +5,7 @@ person::person()
 {
 	money = 1500;
 
+
 	//продукты
 	bread_count = 1;
 	meat_count = 0;
@@ -15,6 +16,11 @@ person::person()
 
 
 	BankClass::clients++;
+}
+
+int person::get_ex()
+{
+	return exLvl;
 }
 
 bool person::get_hunger()
