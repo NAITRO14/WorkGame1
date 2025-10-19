@@ -5,13 +5,18 @@ class shopClass;
 
 class person
 {
+	//деньги
 	float money;
 
+	//статы персонажа
 	bool isHungry;
+	short exLvl = 0;
 
+	//продуктов в рюкзаке
 	short bread_count;
 	short meat_count;
 	short lemonade_count;
+	short coffe_count;
 
 public:
 
@@ -29,6 +34,8 @@ public:
 	//друзья
 	friend void show_shop(shopClass& shop, person& pers);
 	friend bool isGameLost(person& pers, shopClass& shop);
+	friend void work_act(person& pers, BankClass& bank);
+	friend void sleep_act(shopClass& shop, person& pers);
 
 	friend BankClass;
 	

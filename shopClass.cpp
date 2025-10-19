@@ -8,11 +8,24 @@ shopClass::shopClass()
 	bread_cost = rand() % 50 + 70;
 	meat_cost = rand() % 2000 + 2500;
 	lemonade_cost = rand() % 100 + 120;
+	coffe_cost = rand() % 150 + 450;
 
 	//товара может и не быть вообще
 	lemonade_count = rand() % 11;
 	bread_count = rand() % 9;
 	meat_count = rand() % 6;
+
+	coffe_count = 0;
+
+	short chance;
+	for (short i = 0; i < 3; i++)
+	{
+		chance = rand() % 6;
+		if (chance == 1)
+		{
+			coffe_count++;
+		}
+	}
 
 	BankClass::companies++;
 }

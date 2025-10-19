@@ -15,18 +15,17 @@ void enter_num(short& num)
 	}
 }
 
-int work_act(short wpd, person& pers, BankClass& bank)
+void work_act(person& pers, BankClass& bank)
 {
-	if (wpd < 3)
+	if (pers.exLvl < 3)
 	{
 		pers.to_work(pers, bank);
-		wpd++;
+		pers.exLvl++;
 	}
 	else
 	{
 		SetColor(4, 0); cout << "Вы очень устали и больше не можете работать. . ." << endl; SetColor(15, 0);
 	}
-	return wpd;
 }
 
 void sleep_act(shopClass & shop, person& pers)
@@ -43,9 +42,23 @@ void sleep_act(shopClass & shop, person& pers)
 	shop.meat_count = rand() % 5 + 1;
 	shop.lemonade_count = rand() % 11;
 
+	short chance;
+	for (short i = 0; i < 3; i++)
+	{
+		chance = rand() % 5 + 1; //шанс выпадения кофе - 0.2
+		if (chance == 1)
+		{
+			shop.coffe_count++;
+		}
+	}
+
 	shop.bread_cost = rand() % 20 + 50;
 	shop.meat_cost = rand() % 1000 + 2000;
 	shop.lemonade_cost = rand() % 50 + 70;
+	shop.coffe_cost = rand() % 150 + 450;
+
+	
+	pers.exLvl = 0;
 
 	SetColor(14, 0); cout << "Интересно, что нового в магазине . . ." << endl; SetColor(15, 0);
 }
@@ -62,11 +75,13 @@ void show_shop(shopClass& shop, person& pers)
 		cout << "1|Хлеб: " << shop.bread_count << " | Стоимость: " << shop.bread_cost << endl;
 		cout << "2|Мясо: " << shop.meat_count << " | Стоимость: " << shop.meat_cost << endl;
 		cout << "3|Лимонад: " << shop.lemonade_count << " | Стоимость: " << shop.lemonade_cost << endl;
-		
+		cout << "4|Кофе: " << shop.coffe_count << " | Стоимость: " << shop.coffe_cost << endl;
+
+
 		SetColor(8, 0);
 		cout << "--------------------" << endl;
 		cout << "Хотите купить что-то?" << endl;
-		cout << "1-3 -- купить товар" << endl;
+		cout << "1-4 -- купить товар" << endl;
 		cout << "0 -- уйти" << endl;
 		cout << "--------------------" << endl;
 		SetColor(15, 0);
@@ -88,6 +103,7 @@ void show_shop(shopClass& shop, person& pers)
 			if (count * shop.bread_cost > pers.money)
 			{
 				cout << "Кажется, у меня не хватит на это денег . . ." << endl;
+				system("pause");
 				continue;
 			}
 
@@ -108,7 +124,7 @@ void show_shop(shopClass& shop, person& pers)
 		}break;
 		case 2:
 		{
-			if (shop.meat_count == 0) { cout << "Больше нет, приходи завтра, может, завезут" << endl; continue; }
+			if (shop.meat_count == 0) { cout << "Больше нет, приходи завтра, может, завезут" << endl; system("pause"); continue; }
 			cout << "Сколько вам ?" << endl;
 			cout << "Ввод: "; enter_num(count);
 
@@ -136,13 +152,14 @@ void show_shop(shopClass& shop, person& pers)
 		}break;
 		case 3:
 		{
-			if (shop.lemonade_count == 0) { cout << "Больше нет, приходи завтра, может, завезут" << endl; continue; }
+			if (shop.lemonade_count == 0) { cout << "Больше нет, приходи завтра, может, завезут" << endl; system("pause"); continue; }
 			cout << "Сколько вам ?" << endl;
 			cout << "Ввод: "; enter_num(count);
 
 			if (count * shop.lemonade_cost > pers.money)
 			{
 				cout << "Кажется, у меня не хватит на это денег . . ." << endl;
+				system("pause");
 				continue;
 			}
 
@@ -153,6 +170,34 @@ void show_shop(shopClass& shop, person& pers)
 
 				pers -= shop.lemonade_cost * count;
 				shop += shop.lemonade_cost * count;
+			}
+			else
+			{
+				cout << "Столько нет. Могу предложить только " << shop.bread_count << endl;
+				system("pause");
+			}
+
+		}break;
+		case 4:
+		{
+			if (shop.coffe_count == 0) { cout << "Больше нет, приходи завтра, может, завезут" << endl; system("pause"); continue; }
+			cout << "Сколько вам ?" << endl;
+			cout << "Ввод: "; enter_num(count);
+
+			if (count * shop.coffe_cost > pers.money)
+			{
+				cout << "Кажется, у меня не хватит на это денег . . ." << endl;
+				system("pause");
+				continue;
+			}
+
+			if (count <= shop.coffe_count)
+			{
+				shop.coffe_count -= count;
+				pers.coffe_count += count;
+
+				pers -= shop.coffe_count * count;
+				shop += shop.coffe_count * count;
 			}
 			else
 			{

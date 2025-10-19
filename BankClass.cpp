@@ -7,8 +7,14 @@ BankClass::BankClass()
 
 void BankClass::taxes(shopClass& shop, person& pers)
 {
-	float persTax = ((rand() % 10 + 1) / 10.0f) * 1000.0f;
-	float shopTax = ((rand() % 10 + 1) / 10.0f) * 5000.0f;
+	short critTax = 1;
+	if (money <= 5000)
+	{
+		critTax = 10;
+	}
+
+	float persTax = ((rand() % 10 + critTax) / 10.0f) * 1000.0f;
+	float shopTax = ((rand() % 10 + critTax) / 10.0f) * 5000.0f;
 
 	pers.money -= persTax;
 	shop.money -= shopTax;

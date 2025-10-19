@@ -9,6 +9,7 @@ person::person()
 	bread_count = 1;
 	meat_count = 0;
 	lemonade_count = 0;
+	coffe_count = 0;
 
 	isHungry = 1;
 
@@ -41,7 +42,7 @@ void person::show_inv(short mang)
 	system("cls");
 	if (mang == 2)
 	{
-		SetColor(LightRed, 0); cout << "Вы очень голодны, перд сном вам нужно поесть" << endl; SetColor(15, 0);
+		SetColor(LightRed, 0); cout << "Вы еще не если сегодня, перд сном вам нужно поесть" << endl; SetColor(15, 0);
 
 	}
 	cout << "===Рюкзак===" << endl;
@@ -59,6 +60,16 @@ void person::show_inv(short mang)
 	{
 		cout << "Лимонад: " << lemonade_count << endl;
 		isEmpty = 0;
+	}
+	if (coffe_count > 0)
+	{
+		cout << "Кофе: " << coffe_count << endl;
+		isEmpty = 0;
+	}
+
+	if (isEmpty)
+	{
+		cout << "У вас ничего нет" << endl;
 	}
 
 	to_eat(mang);
@@ -105,6 +116,13 @@ void person::to_eat(short mang)
 		lemonade_count--;
 		isHungry = 0;
 		
+	}
+	else if (inp == "Кофе" or inp == "кофе")
+	{
+		coffe_count--;
+		isHungry = 0;
+		exLvl -= 2;
+
 	}
 	else
 	{

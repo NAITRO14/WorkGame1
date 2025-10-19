@@ -13,7 +13,7 @@ int main()
 	SetConsoleCP(1251); SetConsoleOutputCP(1251);
 
 	shopClass shop; person pers; BankClass bank;
-	short man; short works_per_day = 0;
+	short man;
 	short day = 0; bool isIn = 1;
 	
 
@@ -36,7 +36,7 @@ int main()
 		{
 		case 1:
 		{
-			works_per_day = work_act(works_per_day, pers, bank);
+			work_act(pers, bank);
 		}break;
 		case 2:
 		{
@@ -49,7 +49,6 @@ int main()
 			bank.taxes(shop, pers);
 			isIn = isGameLost(pers, shop);
 
-			works_per_day = 0;
 			day++;
 			
 		}break;

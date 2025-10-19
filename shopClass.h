@@ -13,6 +13,8 @@ class shopClass
 
 	short meat_count; short meat_cost;
 
+	short coffe_count; short coffe_cost;
+
 public:
 	
 	shopClass();
