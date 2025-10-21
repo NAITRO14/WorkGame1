@@ -36,8 +36,8 @@ void person::print_money()
 void person::to_work(person& p, BankClass& bank)
 {
 	float mtmp = bank.salary();
-
 	money += mtmp;
+	if (bank.get_money() <= 5000) cout << "Из-за трудностей банка, выплаты снижены." << endl;
 
 	cout << "Заработано: "; SetColor(2, 0); cout << mtmp << endl; SetColor(15, 0);
 }
@@ -143,6 +143,18 @@ void person::to_eat(short mang)
 	}
 	return;
 	
+}
+
+void person::sleep()
+{
+	if (isHungry)
+	{
+		show_inv(2);
+	}
+	system("cls");
+	
+	exLvl = 0;
+	SetColor(2, 0); cout << "Наступает новый день, вы полны сил!" << endl; SetColor(15, 0);
 }
 
 person person::operator-=(float n)

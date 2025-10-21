@@ -11,6 +11,7 @@ void BankClass::taxes(shopClass& shop, person& pers)
 	if (money <= 5000)
 	{
 		critTax = 10;
+		cout << "Из-за трудностей банка, налоги увеличиены." << endl;
 	}
 
 	float persTax = ((rand() % 10 + critTax) / 10.0f) * 1000.0f;
@@ -28,6 +29,8 @@ void BankClass::taxes(shopClass& shop, person& pers)
 float BankClass::salary()
 {
 	float sal = (rand() % 1801 + 700) + (rand() % 99 + 1) / 10.0f;
+	if (money <= 5000) sal *= 0.5; // урезать зарплату вдвое, если банк на грани разорения
+	
 	money -= sal; // выплатить деньги за работу
 
 	return sal;
@@ -47,6 +50,8 @@ int BankClass::get_comp()
 {
 	return companies;
 }
+
+
 
 //ostream& operator<<(ostream& os, BankClass& bank)
 //{

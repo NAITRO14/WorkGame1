@@ -48,7 +48,7 @@ int main()
 		{
 			sleep_act(shop, pers);
 			bank.taxes(shop, pers);
-			isIn = isGameLost(pers, shop);
+			isIn = isGameLost(pers, shop, bank);
 
 			day++;
 			

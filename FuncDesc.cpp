@@ -30,37 +30,8 @@ void work_act(person& pers, BankClass& bank)
 
 void sleep_act(shopClass & shop, person& pers)
 {
-	if (pers.get_hunger())
-	{
-		pers.show_inv(2);
-	}
-
-	system("cls");
-	SetColor(2, 0); cout << "Наступает новый день, вы полны сил!" << endl; SetColor(15, 0);
-
-	shop.bread_count = rand() % 5 + 1;
-	shop.meat_count = rand() % 5 + 1;
-	shop.lemonade_count = rand() % 11;
-
-	short chance;
-	for (short i = 0; i < 3; i++)
-	{
-		chance = rand() % 5 + 1; //шанс выпадения кофе - 0.2
-		if (chance == 1)
-		{
-			shop.coffe_count++;
-		}
-	}
-
-	shop.bread_cost = rand() % 20 + 50.0f;
-	shop.meat_cost = rand() % 1000 + 2000.0f;
-	shop.lemonade_cost = rand() % 50 + 70.0f;
-	shop.coffe_cost = rand() % 150 + 450.0f;
-
-	
-	pers.exLvl = 0;
-
-	SetColor(14, 0); cout << "Интересно, что нового в магазине . . ." << endl; SetColor(15, 0);
+	pers.sleep();
+	shop.sleep();
 }
 
 void show_shop(shopClass& shop, person& pers)
@@ -210,7 +181,7 @@ void show_shop(shopClass& shop, person& pers)
 	}
 }
 
-bool isGameLost(person& pers, shopClass& shop)
+bool isGameLost(person& pers, shopClass& shop, BankClass& bank)
 {
 	if (pers.isHungry)//смерть от голода
 	{
@@ -230,6 +201,13 @@ bool isGameLost(person& pers, shopClass& shop)
 	{
 		system("cls");
 		SetColor(4, 0); cout << "Единственный магазин в вашем городе разорился! Он не мог больше содержаться и закрылся. Через время вы умерли от голода . . ." << endl; SetColor(15, 0);
+		return false;
+	}
+
+	if (bank.money < 0)// кончились деньги у магазина
+	{
+		system("cls");
+		SetColor(4, 0); cout << "Центральный банк вашего города, единственная экономическая опора, которая могла немного сдерживать хаос, разорился. Работы в городе нет, еды нет, а по улицам ходят раъяренные ситуацией люди и творят бесчинства. Через время вы умираете, из-за того, что вас сосед выстреливает вам голову из пистолета, чтобы украсть у вас еду" << endl; SetColor(15, 0);
 		return false;
 	}
 

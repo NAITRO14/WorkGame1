@@ -15,6 +15,7 @@ public:
 	float get_money();
 	int get_clint();
 	int get_comp();
+	
 
 	//функции банка
 	void taxes(shopClass& shop, person& pers);
@@ -22,6 +23,8 @@ public:
 
 	//друзья
 	friend class person; friend class shopClass;
+
+	friend bool isGameLost(person& pers, shopClass& shop, BankClass& bank);
 
 	/*friend ostream& operator << (ostream& os, BankClass& bank);*/
 };
