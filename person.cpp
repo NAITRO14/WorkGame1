@@ -33,12 +33,15 @@ void person::print_money()
 	cout << money;
 }
 
-void person::to_work(person& p, BankClass& bank)
+void person::to_work(BankClass& bank)
 {
+	if (exLvl == 0) { SetColor(4, 0); cout << "Вы очень устали и больше не можете работать. . ." << endl; SetColor(15, 0); return; }
+
 	float mtmp = bank.salary();
 	money += mtmp;
 
 	cout << "Заработано: "; SetColor(2, 0); cout << mtmp << endl; SetColor(15, 0);
+	exLvl++;
 }
 
 void person::show_inv(short mang)

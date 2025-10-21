@@ -37,11 +37,11 @@ int main()
 		{
 		case 1:
 		{
-			work_act(pers, bank);
+			pers.to_work(bank);
 		}break;
 		case 2:
 		{
-			show_shop(shop, pers);
+			shop.show_shop(shop, pers);
 			continue;
 		}break;
 		case 3:

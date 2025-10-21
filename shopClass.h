@@ -22,11 +22,11 @@ public:
 	int get_b();
 	int get_m();
 	void print_money();
-	int get_money();
+	float get_money();
 	void sleep();
 
 	//друг
-	friend void show_shop(shopClass& shop, person& pers);
+	void show_shop(shopClass& shop, person& pers);
 	friend bool isGameLost(person& pers, shopClass& shop, BankClass& bank);
 	/*friend ostream& operator << (ostream& os, shopClass& shop);*/
 

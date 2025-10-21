@@ -28,17 +28,15 @@ public:
 	int get_ex();
 
 	//функции персоны
-	void to_work(person& p, BankClass& bank);
+	void to_work(BankClass& bank);
 	void show_inv(short mang);
 	void to_eat(short mang);
 	void sleep();
 
 	//друзья
-	friend void show_shop(shopClass& shop, person& pers);
 	friend bool isGameLost(person& pers, shopClass& shop, BankClass& bank);
-	friend void work_act(person& pers, BankClass& bank);
 
-	friend BankClass;
+	friend BankClass; friend shopClass;
 	
 
 	person operator -= (float n);

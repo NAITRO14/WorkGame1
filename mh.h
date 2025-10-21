@@ -30,7 +30,6 @@ inline void SetColor(int text, int background)
 void enter_num(short& num);
 
 //функции действий
-int work_act(short wpd, person& pers, BankClass& bank);
 void sleep_act(shopClass & shop, person& pers);
 
 bool isGameLost(person& pers, shopClass& shop, BankClass& bank);
