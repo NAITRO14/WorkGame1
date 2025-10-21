@@ -10,8 +10,7 @@ void BankClass::taxes(shopClass& shop, person& pers)
 	short critTax = 1;
 	if (money <= 5000)
 	{
-		critTax = 10;
-		cout << "Из-за трудностей банка, налоги увеличиены." << endl;
+		critTax = 20;
 	}
 
 	float persTax = ((rand() % 10 + critTax) / 10.0f) * 1000.0f;
