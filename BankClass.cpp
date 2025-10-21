@@ -10,7 +10,7 @@ void BankClass::taxes(shopClass& shop, person& pers)
 	short critTax = 1;
 	if (money <= 5000)
 	{
-		critTax = 10;
+		critTax = 20;
 	}
 
 	float persTax = ((rand() % 10 + critTax) / 10.0f) * 1000.0f;
