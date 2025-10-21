@@ -26,7 +26,6 @@ public:
 	void sleep();
 
 	//друг
-	friend void sleep_act(shopClass& shop, person& pers);
 	friend void show_shop(shopClass& shop, person& pers);
 	friend bool isGameLost(person& pers, shopClass& shop, BankClass& bank);
 	/*friend ostream& operator << (ostream& os, shopClass& shop);*/

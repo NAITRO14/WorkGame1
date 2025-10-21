@@ -11,6 +11,7 @@ void BankClass::taxes(shopClass& shop, person& pers)
 	if (money <= 5000)
 	{
 		critTax = 20;
+		SetColor(4, 0); cout << "Из-за трудностей банка, налоги увеличены" << endl; SetColor(15, 0);
 	}
 
 	float persTax = ((rand() % 10 + critTax) / 10.0f) * 1000.0f;
@@ -28,7 +29,7 @@ void BankClass::taxes(shopClass& shop, person& pers)
 float BankClass::salary()
 {
 	float sal = (rand() % 1801 + 700) + (rand() % 99 + 1) / 10.0f;
-	if (money <= 5000) sal *= 0.5; // урезать зарплату вдвое, если банк на грани разорения
+	if (money <= 5000) { sal *= 0.5; SetColor(4, 0); cout << "Из-за трудностей банка, выплаты снижены." << endl; SetColor(15, 0); } // урезать зарплату вдвое, если банк на грани разорения
 	
 	money -= sal; // выплатить деньги за работу
 

@@ -38,8 +38,6 @@ public:
 	friend bool isGameLost(person& pers, shopClass& shop, BankClass& bank);
 	friend void work_act(person& pers, BankClass& bank);
 
-
-	friend void sleep_act(shopClass& shop, person& pers);
 	friend BankClass;
 	
 

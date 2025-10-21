@@ -37,7 +37,6 @@ void person::to_work(person& p, BankClass& bank)
 {
 	float mtmp = bank.salary();
 	money += mtmp;
-	if (bank.get_money() <= 5000) cout << "Из-за трудностей банка, выплаты снижены." << endl;
 
 	cout << "Заработано: "; SetColor(2, 0); cout << mtmp << endl; SetColor(15, 0);
 }
