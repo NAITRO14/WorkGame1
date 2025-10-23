@@ -95,22 +95,48 @@ void shopClass::show_shop(shopClass& shop, person& pers)
 	while (isIn)
 	{
 		system("cls");
-		shop.print_money();
+		cout << "=====Магазин====="; GotoXY(30, 0); cout << "Денег в кошельке: " << pers.getMoney() << endl;
+		SetColor(DarkGray, 0);
+		for (short y = 1; y < 21; y += 2)
+		{
+			for (short x = 1; x < 75; x++)
+			{
+				GotoXY(x, y); cout << "-";
+			}
+				
+		}
 
-		cout << "1|Хлеб: " << shop.bread_count << " | Стоимость: " << shop.bread_cost << endl;
-		cout << "2|Мясо: " << shop.meat_count << " | Стоимость: " << shop.meat_cost << endl;
-		cout << "3|Лимонад: " << shop.lemonade_count << " | Стоимость: " << shop.lemonade_cost << endl;
-		cout << "4|Кофе: " << shop.coffe_count << " | Стоимость: " << shop.coffe_cost << endl;
-		cout << "5|Йогурт: " << shop.yogurt_count << " | Стоимость: " << shop.yogurt_cost << endl;
+		for (short i = 0; i < 4; i++)
+		{
+			short x = 0;
+			if (i == 0) x = 1;
+			else if (i == 1) x = 11;
+			else if (i == 2) x = 60;
+			else if (i == 3) x = 75;
+
+			for (short y = 1; y < 20; y++)
+			{
+				GotoXY(x, y); cout << "|";
+			}
+
+		}
+		SetColor(15, 0);
+		GotoXY(2, 2); cout << "Товар"; GotoXY(50, 2); cout << "Количсетво"; GotoXY(61, 2); cout << "Стоимость";
+
+		cout << endl;
+		GotoXY(2, 4); cout << "1|Хлеб"; GotoXY(58, 4); cout << shop.bread_count; GotoXY(61, 4); cout << shop.bread_cost << endl;
+		GotoXY(2, 6); cout << "2|Мясо"; GotoXY(58, 6); cout << shop.meat_count; GotoXY(61, 6); cout << shop.meat_cost << endl;
+		GotoXY(2, 8); cout << "3|Лимонад"; GotoXY(58, 8); cout << shop.lemonade_count; GotoXY(61, 8); cout << shop.lemonade_cost << endl;
+		GotoXY(2, 10); cout << "4|Кофе"; GotoXY(58, 10); cout << shop.coffe_count; GotoXY(61, 10); cout << shop.coffe_cost << endl;
+		GotoXY(2, 12); cout << "5|Йогурт"; GotoXY(58, 12); cout << shop.yogurt_count; GotoXY(61, 12); cout << shop.yogurt_cost << endl;
 
 
 
-		SetColor(8, 0);
-		cout << "--------------------" << endl;
-		cout << "Хотите купить что-то?" << endl;
-		cout << "1-4 -- купить товар" << endl;
-		cout << "0 -- уйти" << endl;
-		cout << "--------------------" << endl;
+		SetColor(8, 0); 
+		GotoXY(1, 20); cout << "|--------------------|" << endl;
+		GotoXY(1, 21); cout << "|1-4 -- купить товар |" << endl;
+		GotoXY(1, 22); cout << "|0 -- уйти           |" << endl;
+		GotoXY(1, 23); cout << "|--------------------|" << endl;
 		SetColor(15, 0);
 
 		isIn = to_buy(shop, pers);

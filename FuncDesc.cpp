@@ -36,19 +36,19 @@ bool to_buy(shopClass& shop, person& pers)
 {
 	short man; short count;
 
-	cout << "Ввод: ";
+	GotoXY(23, 22); cout << "Ввод: ";
 	enter_num(man);
+	if (man == 0) return 0;
+
+	GotoXY(35, 21); cout << "Сколько вам ?" << endl;
+	GotoXY(35, 22); cout << "Ввод: "; enter_num(count);
 	switch (man)
 	{
-	case 0:
-	{
-		return 0;
-	}break;
 	case 1:
 	{
-		if (shop.bread_count == 0) { cout << "Больше нет, приходи завтра, может, завезут" << endl; system("pause"); return 1; }
+		/*if (shop.bread_count == 0) { cout << "Больше нет, приходи завтра, может, завезут" << endl; system("pause"); return 1; }
 		cout << "Сколько вам ?" << endl;
-		cout << "Ввод: "; enter_num(count);
+		cout << "Ввод: "; enter_num(count);*/
 
 		if (count * shop.bread_cost > pers.money)
 		{
@@ -74,9 +74,9 @@ bool to_buy(shopClass& shop, person& pers)
 	}break;
 	case 2:
 	{
-		if (shop.meat_count == 0) { cout << "Больше нет, приходи завтра, может, завезут" << endl; system("pause"); return 1; }
+		/*if (shop.meat_count == 0) { cout << "Больше нет, приходи завтра, может, завезут" << endl; system("pause"); return 1; }
 		cout << "Сколько вам ?" << endl;
-		cout << "Ввод: "; enter_num(count);
+		cout << "Ввод: "; enter_num(count);*/
 
 		if (count * shop.meat_cost > pers.money)
 		{
@@ -103,9 +103,9 @@ bool to_buy(shopClass& shop, person& pers)
 	}break;
 	case 3:
 	{
-		if (shop.lemonade_count == 0) { cout << "Больше нет, приходи завтра, может, завезут" << endl; system("pause"); return 1; }
+		/*if (shop.lemonade_count == 0) { cout << "Больше нет, приходи завтра, может, завезут" << endl; system("pause"); return 1; }
 		cout << "Сколько вам ?" << endl;
-		cout << "Ввод: "; enter_num(count);
+		cout << "Ввод: "; enter_num(count);*/
 
 		if (count * shop.lemonade_cost > pers.money)
 		{
@@ -131,9 +131,9 @@ bool to_buy(shopClass& shop, person& pers)
 	}break;
 	case 4:
 	{
-		if (shop.coffe_count == 0) { cout << "Больше нет, приходи завтра, может, завезут" << endl; system("pause"); return 1; }
+		/*if (shop.coffe_count == 0) { cout << "Больше нет, приходи завтра, может, завезут" << endl; system("pause"); return 1; }
 		cout << "Сколько вам ?" << endl;
-		cout << "Ввод: "; enter_num(count);
+		cout << "Ввод: "; enter_num(count);*/
 
 		if (count * shop.coffe_cost > pers.money)
 		{
@@ -159,9 +159,9 @@ bool to_buy(shopClass& shop, person& pers)
 	}break;
 	case 5:
 	{
-		if (shop.yogurt_count == 0) { cout << "Больше нет, приходи завтра, может, завезут" << endl; system("pause"); return 1; }
+		/*if (shop.yogurt_count == 0) { cout << "Больше нет, приходи завтра, может, завезут" << endl; system("pause"); return 1; }
 		cout << "Сколько вам ?" << endl;
-		cout << "Ввод: "; enter_num(count);
+		cout << "Ввод: "; enter_num(count);*/
 
 		if (count * shop.yogurt_cost > pers.money)
 		{
@@ -186,6 +186,7 @@ bool to_buy(shopClass& shop, person& pers)
 
 	}break;
 	}
+	return 1;
 }
 
 
