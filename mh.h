@@ -32,6 +32,7 @@ void enter_num(short& num);
 //функции действий
 void sleep_act(shopClass & shop, person& pers);
 
+bool to_buy(shopClass& shop, person& pers);
 bool isGameLost(person& pers, shopClass& shop, BankClass& bank);
 
 

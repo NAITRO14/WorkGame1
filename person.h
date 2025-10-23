@@ -25,6 +25,7 @@ public:
 	//геттеры
 	bool get_hunger();
 	void print_money();
+	float getMoney();
 	int get_ex();
 
 	//функции персоны
@@ -35,7 +36,7 @@ public:
 
 	//друзья
 	friend bool isGameLost(person& pers, shopClass& shop, BankClass& bank);
-
+	friend bool to_buy(shopClass& shop, person& pers);
 	friend BankClass; friend shopClass;
 	
 

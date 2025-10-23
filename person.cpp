@@ -33,9 +33,14 @@ void person::print_money()
 	cout << money;
 }
 
+float person::getMoney()
+{
+	return money;
+}
+
 void person::to_work(BankClass& bank)
 {
-	if (exLvl == 0) { SetColor(4, 0); cout << "¬ы очень устали и больше не можете работать. . ." << endl; SetColor(15, 0); return; }
+	if (exLvl == 3) { SetColor(4, 0); cout << "¬ы очень устали и больше не можете работать. . ." << endl; SetColor(15, 0); return; }
 
 	float mtmp = bank.salary();
 	money += mtmp;

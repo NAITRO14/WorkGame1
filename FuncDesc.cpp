@@ -23,6 +23,136 @@ void sleep_act(shopClass & shop, person& pers)
 
 
 
+bool to_buy(shopClass& shop, person& pers)
+{
+	short man; short count;
+
+	cout << "Ввод: ";
+	enter_num(man);
+	switch (man)
+	{
+	case 0:
+	{
+		return 0;
+	}break;
+	case 1:
+	{
+		if (shop.bread_count == 0) { cout << "Больше нет, приходи завтра, может, завезут" << endl; system("pause"); return 1; }
+		cout << "Сколько вам ?" << endl;
+		cout << "Ввод: "; enter_num(count);
+
+		if (count * shop.bread_cost > pers.money)
+		{
+			cout << "Кажется, у меня не хватит на это денег . . ." << endl;
+			system("pause");
+			return 1;
+		}
+
+		if (count <= shop.bread_count)
+		{
+			shop.bread_count -= count;
+			pers.bread_count += count;
+
+			pers -= shop.bread_cost * count;
+			shop += shop.bread_cost * count;
+		}
+		else
+		{
+			cout << "Столько нет. Могу предложить только " << shop.bread_count << endl;
+			system("pause");
+		}
+
+	}break;
+	case 2:
+	{
+		if (shop.meat_count == 0) { cout << "Больше нет, приходи завтра, может, завезут" << endl; system("pause"); return 1; }
+		cout << "Сколько вам ?" << endl;
+		cout << "Ввод: "; enter_num(count);
+
+		if (count * shop.meat_cost > pers.money)
+		{
+			cout << "Кажется, у меня не хватит на это денег . . ." << endl;
+			system("pause");
+			return 1;
+		}
+
+		if (count <= shop.meat_count)
+		{
+			shop.meat_count -= count;
+			pers.meat_count += count;
+
+			pers -= shop.meat_cost * count;
+			shop += shop.meat_cost * count;
+		}
+		else
+		{
+			
+			cout << "Столько нет. Могу предложить только " << shop.meat_count << endl;
+			system("pause");
+		}
+
+	}break;
+	case 3:
+	{
+		if (shop.lemonade_count == 0) { cout << "Больше нет, приходи завтра, может, завезут" << endl; system("pause"); return 1; }
+		cout << "Сколько вам ?" << endl;
+		cout << "Ввод: "; enter_num(count);
+
+		if (count * shop.lemonade_cost > pers.money)
+		{
+			cout << "Кажется, у меня не хватит на это денег . . ." << endl;
+			system("pause");
+			return 1;
+		}
+
+		if (count <= shop.lemonade_count)
+		{
+			shop.lemonade_count -= count;
+			pers.lemonade_count += count;
+
+			pers -= shop.lemonade_cost * count;
+			shop += shop.lemonade_cost * count;
+		}
+		else
+		{
+			cout << "Столько нет. Могу предложить только " << shop.bread_count << endl;
+			system("pause");
+		}
+
+	}break;
+	case 4:
+	{
+		if (shop.coffe_count == 0) { cout << "Больше нет, приходи завтра, может, завезут" << endl; system("pause"); return 1; }
+		cout << "Сколько вам ?" << endl;
+		cout << "Ввод: "; enter_num(count);
+
+		if (count * shop.coffe_cost > pers.money)
+		{
+			cout << "Кажется, у меня не хватит на это денег . . ." << endl;
+			system("pause");
+			return 1;
+		}
+
+		if (count <= shop.coffe_count)
+		{
+			shop.coffe_count -= count;
+			pers.coffe_count += count;
+
+			pers -= shop.coffe_cost * count;
+			shop += shop.coffe_cost * count;
+		}
+		else
+		{
+			cout << "Столько нет. Могу предложить только " << shop.bread_count << endl;
+			system("pause");
+		}
+
+	}break;
+	}
+}
+
+
+
 bool isGameLost(person& pers, shopClass& shop, BankClass& bank)
 {
 	if (pers.isHungry)//смерть от голода
