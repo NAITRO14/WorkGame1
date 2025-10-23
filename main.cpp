@@ -58,6 +58,28 @@ int main()
 			pers.show_inv(1);
 			continue;
 		}break;
+		case 1001: //количество клиентов
+		{
+			cout << "Количество клиентов: " << bank.get_clint() << endl;
+		}break;
+		case 1002: //количество компаний
+		{
+			cout << "Количество компаний: " << bank.get_comp() << endl; 
+		}break;
+		case 1003: //Денег у банка
+		{
+			cout << "Денег у банка: " << bank.get_money() << endl;
+		}break;
+		case 1004: //Денег у магазина
+		{
+			cout << "Денег у магазина: " << shop.get_money() << endl;
+		}break;
+		case 1005: //Посмотреть БЖУ
+		{
+			cout << "Белки: " << pers.get_protein() << endl;
+			cout << "Жиры:" << pers.get_fat() << endl;
+			cout << "Углеводы:" << pers.get_carbon() << endl;
+		}break;
 		}
 		system("pause");
 	}

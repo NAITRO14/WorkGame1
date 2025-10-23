@@ -18,6 +18,11 @@ class person
 	short lemonade_count;
 	short coffe_count;
 
+	//БЖУ (чтобы был смысл от разных товаров)
+	short protein = 60; 
+	short fats = 60;
+	short carbons = 60;
+
 public:
 
 	person();
@@ -27,6 +32,10 @@ public:
 	void print_money();
 	float getMoney();
 	int get_ex();
+
+	short get_protein();
+	short get_carbon();
+	short get_fat();
 
 	//функции персоны
 	void to_work(BankClass& bank);
