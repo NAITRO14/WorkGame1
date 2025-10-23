@@ -17,6 +17,7 @@ class person
 	short meat_count;
 	short lemonade_count;
 	short coffe_count;
+	short yogurt_count;
 
 	//БЖУ (чтобы был смысл от разных товаров)
 	short protein = 60; 

@@ -15,6 +15,8 @@ class shopClass
 
 	short coffe_count; float coffe_cost;
 
+	short yogurt_count; short yogurt_cost;
+
 public:
 	
 	shopClass();

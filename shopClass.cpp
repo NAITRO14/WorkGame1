@@ -9,11 +9,13 @@ shopClass::shopClass()
 	meat_cost = rand() % 1000 + 2000.0f;
 	lemonade_cost = rand() % 50 + 70.0f;
 	coffe_cost = rand() % 150 + 450.0f;
+	yogurt_cost = rand() % 101 + 200;
 
 	//товара может и не быть вообще
 	lemonade_count = rand() % 11;
 	bread_count = rand() % 9;
 	meat_count = rand() % 6;
+	yogurt_count = rand() % 7;
 
 	coffe_count = 0;
 
@@ -63,6 +65,7 @@ void shopClass::sleep()
 	bread_count = rand() % 5 + 1;
 	meat_count = rand() % 5 + 1;
 	lemonade_count = rand() % 11;
+	yogurt_count = rand() % 7;
 
 	//рандом кофе(реже остальных)
 	short chance;
@@ -98,6 +101,8 @@ void shopClass::show_shop(shopClass& shop, person& pers)
 		cout << "2|Мясо: " << shop.meat_count << " | Стоимость: " << shop.meat_cost << endl;
 		cout << "3|Лимонад: " << shop.lemonade_count << " | Стоимость: " << shop.lemonade_cost << endl;
 		cout << "4|Кофе: " << shop.coffe_count << " | Стоимость: " << shop.coffe_cost << endl;
+		cout << "5|Йогурт: " << shop.yogurt_count << " | Стоимость: " << shop.yogurt_cost << endl;
+
 
 
 		SetColor(8, 0);

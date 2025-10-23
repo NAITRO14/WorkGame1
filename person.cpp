@@ -11,6 +11,7 @@ person::person()
 	meat_count = 0;
 	lemonade_count = 0;
 	coffe_count = 0;
+	yogurt_count = 0;
 
 	isHungry = 1;
 
@@ -56,7 +57,7 @@ float person::getMoney()
 void person::to_work(BankClass& bank)
 {
 	if (exLvl == 3) { SetColor(4, 0); cout << "Вы очень устали и больше не можете работать. . ." << endl; SetColor(15, 0); return; }
-	if (protein < 30 or carbons < 30 or fats < 30) { SetColor(4, 0); cout << "Вы слишком истощены, чтобы работать. Для начала, вам нужно поесть" << endl; SetColor(15, 0); return; }
+	if (protein < 20 or carbons < 20 or fats < 20) { SetColor(4, 0); cout << "Вы слишком истощены, чтобы работать. Для начала, вам нужно поесть" << endl; SetColor(15, 0); return; }
 
 	protein -= 5;
 	carbons -= 5;
@@ -97,6 +98,11 @@ void person::show_inv(short mang)
 	if (coffe_count > 0)
 	{
 		cout << "Кофе: " << coffe_count << endl;
+		isEmpty = 0;
+	}
+	if (yogurt_count > 0)
+	{
+		cout << "Йогурт: " << yogurt_count << endl;
 		isEmpty = 0;
 	}
 
@@ -156,18 +162,29 @@ void person::to_eat(short mang)
 		lemonade_count--;
 		isHungry = 0;
 
-		carbons += rand() % 7 + 1; // 1 - 6
+		carbons += rand() % 11 + 3; // 3 - 10
 		
 	}
 	else if (inp == "Кофе" or inp == "кофе")
 	{
 		coffe_count--;
 		isHungry = 0;
+		
+		//небольшой буст
 		exLvl -= 2;
+		protein += 10;
+		fats += 10;
+		carbons += 10;
 
-		protein -= 5;
-		fats -= 5;
-		carbons -= 5;
+	}
+	else if (inp == "Йогурт" or inp == "йогурт")
+	{
+		yogurt_count--;
+		isHungry = 0;
+
+		protein += rand() % 3;;
+		fats += rand() % 11 + 15;
+		carbons += rand() % 4;
 
 	}
 	else

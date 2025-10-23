@@ -58,6 +58,7 @@ int main()
 			pers.show_inv(1);
 			continue;
 		}break;
+		//вывод служебной информации
 		case 1001: //количество клиентов
 		{
 			cout << "Количество клиентов: " << bank.get_clint() << endl;
@@ -76,9 +77,13 @@ int main()
 		}break;
 		case 1005: //Посмотреть БЖУ
 		{
+			SetColor(8, 0);
+			cout << "----------------" << endl;
 			cout << "Белки: " << pers.get_protein() << endl;
 			cout << "Жиры:" << pers.get_fat() << endl;
 			cout << "Углеводы:" << pers.get_carbon() << endl;
+			cout << "----------------" << endl;
+			SetColor(15, 0);
 		}break;
 		}
 		system("pause");

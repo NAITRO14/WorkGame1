@@ -23,6 +23,15 @@ void sleep_act(shopClass & shop, person& pers)
 
 
 
+void randomForShop(int count, ...)
+{
+	short b_cost = rand() % 20 + 50.0f;
+
+	// в будущем подразумеваеться сделать тут рандом, чтобы по 
+	// всему когду не прописывать новые товары
+
+}
+
 bool to_buy(shopClass& shop, person& pers)
 {
 	short man; short count;
@@ -115,7 +124,7 @@ bool to_buy(shopClass& shop, person& pers)
 		}
 		else
 		{
-			cout << "Столько нет. Могу предложить только " << shop.bread_count << endl;
+			cout << "Столько нет. Могу предложить только " << shop.lemonade_count << endl;
 			system("pause");
 		}
 
@@ -143,7 +152,35 @@ bool to_buy(shopClass& shop, person& pers)
 		}
 		else
 		{
-			cout << "Столько нет. Могу предложить только " << shop.bread_count << endl;
+			cout << "Столько нет. Могу предложить только " << shop.coffe_count << endl;
+			system("pause");
+		}
+
+	}break;
+	case 5:
+	{
+		if (shop.yogurt_count == 0) { cout << "Больше нет, приходи завтра, может, завезут" << endl; system("pause"); return 1; }
+		cout << "Сколько вам ?" << endl;
+		cout << "Ввод: "; enter_num(count);
+
+		if (count * shop.yogurt_cost > pers.money)
+		{
+			cout << "Кажется, у меня не хватит на это денег . . ." << endl;
+			system("pause");
+			return 1;
+		}
+
+		if (count <= shop.yogurt_count)
+		{
+			shop.yogurt_count -= count;
+			pers.yogurt_count += count;
+
+			pers -= shop.yogurt_cost * count;
+			shop += shop.yogurt_cost * count;
+		}
+		else
+		{
+			cout << "Столько нет. Могу предложить только " << shop.yogurt_count << endl;
 			system("pause");
 		}
 
