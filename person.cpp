@@ -59,9 +59,9 @@ void person::to_work(BankClass& bank)
 	if (exLvl == 3) { SetColor(4, 0); cout << "Вы очень устали и больше не можете работать. . ." << endl; SetColor(15, 0); return; }
 	if (protein < 20 or carbons < 20 or fats < 20) { SetColor(4, 0); cout << "Вы слишком истощены, чтобы работать. Для начала, вам нужно поесть" << endl; SetColor(15, 0); return; }
 
-	protein -= 5;
-	carbons -= 5;
-	fats -= 5;
+	protein -= rand() % 10 + 3;
+	carbons -= rand() % 10 + 3;
+	fats -= rand() % 10 + 3;
 
 	float mtmp = bank.salary();
 	money += mtmp;
@@ -210,9 +210,9 @@ void person::sleep()
 	}
 	system("cls");
 	
-	protein -= 10;
-	carbons -= 10;
-	fats -= 10;
+	protein -= rand() % 15 + 6;
+	carbons -= rand() % 15 + 6;
+	fats -= rand() % 15 + 6;
 
 	exLvl = 0;
 	SetColor(2, 0); cout << "Наступает новый день, вы полны сил!" << endl; SetColor(15, 0);
