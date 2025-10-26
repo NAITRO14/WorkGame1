@@ -56,8 +56,8 @@ float person::getMoney()
 
 void person::to_work(BankClass& bank)
 {
-	if (exLvl == 3) { SetColor(4, 0); cout << "Вы очень устали и больше не можете работать. . ." << endl; SetColor(15, 0); return; }
-	if (protein < 20 or carbons < 20 or fats < 20) { SetColor(4, 0); cout << "Вы слишком истощены, чтобы работать. Для начала, вам нужно поесть" << endl; SetColor(15, 0); return; }
+	if (exLvl == 3) { GotoXY(20, 18); SetColor(4, 0); cout << "Вы очень устали и больше не можете работать. . ." << endl; SetColor(15, 0); return; }
+	if (protein < 20 or carbons < 20 or fats < 20) { GotoXY(10, 18); SetColor(4, 0); cout << "Вы слишком истощены, чтобы работать. Для начала, вам нужно поесть" << endl; SetColor(15, 0); return; }
 
 	protein -= rand() % 10 + 3;
 	carbons -= rand() % 10 + 3;
@@ -66,7 +66,7 @@ void person::to_work(BankClass& bank)
 	float mtmp = bank.salary();
 	money += mtmp;
 
-	cout << "Заработано: "; SetColor(2, 0); cout << mtmp << endl; SetColor(15, 0);
+	GotoXY(28 , 10); cout << "Заработано: "; SetColor(2, 0); cout << mtmp << endl; SetColor(15, 0);
 	exLvl++;
 }
 
@@ -106,6 +106,9 @@ void person::show_inv(short mang)
 		isEmpty = 0;
 	}
 
+
+
+
 	if (isEmpty)
 	{
 		cout << "У вас ничего нет" << endl;
@@ -130,8 +133,13 @@ void person::to_eat(short mang)
 	}
 	cout << "---------------------------------------" << endl;
 	SetColor(15, 0);
-	cout << "Ввод: ";
-	cin >> inp;
+
+	GotoXY(22, 14); cout << "Белки:    "; cout << "["; if (protein < 30) SetColor(4, 0); else SetColor(10, 0); for (short i = 0; i < protein / 10; i++) { cout << " # "; } SetColor(15, 0); for (short i = 0; i < 10 - protein / 10; i++) { cout << " * "; } cout << "]";
+	GotoXY(22, 15); cout << "Жиры:     "; cout << "["; if (fats < 30) SetColor(4, 0); else SetColor(10, 0);  for (short i = 0; i < fats / 10; i++) { cout << " # "; } SetColor(15, 0); for (short i = 0; i < 10 - fats / 10; i++) { cout << " * "; } cout << "]";
+	GotoXY(22, 16); cout << "Углеводы: "; cout << "["; if (carbons < 30) SetColor(4, 0); else SetColor(10, 0); for (short i = 0; i < carbons / 10; i++) { cout << " # "; }  SetColor(15, 0); for (short i = 0; i < 10 - carbons / 10; i++) { cout << " * "; } cout << "]";
+
+	GotoXY(60, 6); cout << "Ввод: ";
+	GotoXY(65, 6); cin >> inp;
 
 
 	if (inp == "0")
@@ -143,7 +151,7 @@ void person::to_eat(short mang)
 		bread_count--;
 		isHungry = 0;
 
-		carbons += rand() % 10 + 6; // 6 - 15
+		carbons += rand() % 16 + 6; 
 		fats += rand() % 3; // 0 - 2
 		protein += rand() % 2; // 0 - 1
 		
@@ -153,8 +161,8 @@ void person::to_eat(short mang)
 		meat_count--;
 		isHungry = 0;
 
-		protein += rand() % 11 + 15; // 15 - 25
-		fats += rand() % 14 + 3; // 3 - 13
+		protein += rand() % 21 + 20;
+		fats += rand() % 15 + 5; 
 		carbons += rand() % 3; // 0 - 2
 	}
 	else if (inp == "Лимонад" or inp == "лимонад")
@@ -162,7 +170,7 @@ void person::to_eat(short mang)
 		lemonade_count--;
 		isHungry = 0;
 
-		carbons += rand() % 11 + 3; // 3 - 10
+		carbons += rand() % 17 + 5;
 		
 	}
 	else if (inp == "Кофе" or inp == "кофе")
@@ -172,9 +180,9 @@ void person::to_eat(short mang)
 		
 		//небольшой буст
 		exLvl -= 2;
-		protein += 10;
-		fats += 10;
-		carbons += 10;
+		protein += 15;
+		fats += 15;
+		carbons += 15;
 
 	}
 	else if (inp == "Йогурт" or inp == "йогурт")
@@ -183,7 +191,7 @@ void person::to_eat(short mang)
 		isHungry = 0;
 
 		protein += rand() % 3;;
-		fats += rand() % 11 + 15;
+		fats += rand() % 16 + 15;
 		carbons += rand() % 4;
 
 	}
@@ -198,6 +206,10 @@ void person::to_eat(short mang)
 	{
 		show_inv(mang);
 	}
+	if (protein > 100) protein = 100;
+	if (fats > 100) fats = 100;
+	if (carbons > 100) carbons = 100;
+
 	return;
 	
 }

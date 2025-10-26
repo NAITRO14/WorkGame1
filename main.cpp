@@ -27,9 +27,6 @@ int main()
 		cout << "["; if (pers.get_ex() < 3) { for (short i = 3; i > pers.get_ex(); i--) { cout << " # "; } }
 		else { cout << " ! "; } cout << "]";
 
-		GotoXY(27, 14); cout << "Белки:    "; cout << "["; if (pers.get_protein() < 30) SetColor(4, 0); else SetColor(10, 0); for (short i = 0; i < pers.get_protein() / 10; i++) { cout << " # "; } SetColor(15, 0); for (short i = 0; i < 10 - pers.get_protein() / 10; i++) { cout << " * "; } cout << "]";
-		GotoXY(27, 15); cout << "Жиры:     "; cout << "["; if (pers.get_fat() < 30) SetColor(4, 0); else SetColor(10, 0);  for (short i = 0; i < pers.get_fat() / 10; i++) { cout << " # "; } SetColor(15, 0); for (short i = 0; i < 10 - pers.get_fat() / 10; i++) { cout << " * "; } cout << "]";
-		GotoXY(27, 16); cout << "Углеводы: "; cout << "["; if (pers.get_carbon() < 30) SetColor(4, 0); else SetColor(10, 0); for (short i = 0; i < pers.get_carbon() / 10; i++) { cout << " # "; }  SetColor(15, 0); for (short i = 0; i < 10 - pers.get_carbon() / 10; i++) { cout << " * "; } cout << "]";
 
 
 
@@ -102,6 +99,7 @@ int main()
 			SetColor(15, 0);
 		}break;
 		}
+		GotoXY(20, 19);
 		system("pause");
 	}
 

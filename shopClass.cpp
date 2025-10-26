@@ -121,7 +121,7 @@ void shopClass::show_shop(shopClass& shop, person& pers)
 
 		}
 		SetColor(15, 0);
-		GotoXY(2, 2); cout << "Товар"; GotoXY(50, 2); cout << "Количсетво"; GotoXY(61, 2); cout << "Стоимость";
+		GotoXY(2, 2); cout << "Товар"; GotoXY(50, 2); cout << "Количество"; GotoXY(61, 2); cout << "Стоимость";
 
 		cout << endl;
 		GotoXY(2, 4); cout << "1|Хлеб"; GotoXY(58, 4); cout << shop.bread_count; GotoXY(61, 4); cout << shop.bread_cost << endl;
@@ -134,7 +134,7 @@ void shopClass::show_shop(shopClass& shop, person& pers)
 
 		SetColor(8, 0); 
 		GotoXY(1, 20); cout << "|--------------------|" << endl;
-		GotoXY(1, 21); cout << "|1-4 -- купить товар |" << endl;
+		GotoXY(1, 21); cout << "|1-5 -- купить товар |" << endl;
 		GotoXY(1, 22); cout << "|0 -- уйти           |" << endl;
 		GotoXY(1, 23); cout << "|--------------------|" << endl;
 		SetColor(15, 0);
