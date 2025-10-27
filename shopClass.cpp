@@ -143,6 +143,20 @@ void shopClass::show_shop(shopClass& shop, person& pers)
 	}
 }
 
+void shopClass::ent_value(short *count)
+{
+	GotoXY(32, 21); cout << "Сколько вам ?" << endl;
+	GotoXY(32, 22); cout << "Ввод: "; enter_num(*count);
+}
+
+void shopClass::nothingLeft()
+{
+	SetColor(4, 0);
+	GotoXY(32, 21); cout << "Больше нет, приходи завтра, может, завезут" << endl; GotoXY(32, 22); 
+	SetColor(15, 0);
+	system("pause");
+}
+
 //ostream& operator<<(ostream& os, shopClass& shop)
 //{
 //	cout << "Информация о магазине" << endl;

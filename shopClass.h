@@ -28,6 +28,9 @@ public:
 	void sleep();
 	void show_shop(shopClass& shop, person& pers);
 
+	void ent_value(short *count);
+	void nothingLeft();
+
 	//друг
 	friend bool to_buy(shopClass& shop, person& pers);
 	friend bool isGameLost(person& pers, shopClass& shop, BankClass& bank);

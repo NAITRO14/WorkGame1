@@ -42,3 +42,5 @@ void sleep_act(shopClass & shop, person& pers);
 void randomForShop(int count, ...);
 bool to_buy(shopClass& shop, person& pers);
 bool isGameLost(person& pers, shopClass& shop, BankClass& bank);
+
+

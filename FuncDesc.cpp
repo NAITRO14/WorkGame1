@@ -40,15 +40,13 @@ bool to_buy(shopClass& shop, person& pers)
 	enter_num(man);
 	if (man == 0) return 0;
 
-	GotoXY(35, 21); cout << "Сколько вам ?" << endl;
-	GotoXY(35, 22); cout << "Ввод: "; enter_num(count);
+	
 	switch (man)
 	{
 	case 1:
 	{
-		/*if (shop.bread_count == 0) { cout << "Больше нет, приходи завтра, может, завезут" << endl; system("pause"); return 1; }
-		cout << "Сколько вам ?" << endl;
-		cout << "Ввод: "; enter_num(count);*/
+		if (shop.bread_count == 0) { shop.nothingLeft(); return 1; }
+		shop.ent_value(&count);
 
 		if (count * shop.bread_cost > pers.money)
 		{
@@ -67,16 +65,18 @@ bool to_buy(shopClass& shop, person& pers)
 		}
 		else
 		{
-			cout << "Столько нет. Могу предложить только " << shop.bread_count << endl;
-			system("pause");
+			SetColor(4, 0);
+			GotoXY(32, 22); cout << "Столько нет. Могу предложить только " << shop.bread_count << endl;
+			SetColor(15, 0);
+			GotoXY(32, 23); system("pause");
+			
 		}
 
 	}break;
 	case 2:
 	{
-		/*if (shop.meat_count == 0) { cout << "Больше нет, приходи завтра, может, завезут" << endl; system("pause"); return 1; }
-		cout << "Сколько вам ?" << endl;
-		cout << "Ввод: "; enter_num(count);*/
+		if (shop.meat_count == 0) { shop.nothingLeft(); return 1; }
+		shop.ent_value(&count);
 
 		if (count * shop.meat_cost > pers.money)
 		{
@@ -96,16 +96,17 @@ bool to_buy(shopClass& shop, person& pers)
 		else
 		{
 			
-			cout << "Столько нет. Могу предложить только " << shop.meat_count << endl;
-			system("pause");
+			SetColor(4, 0);
+			GotoXY(32, 22); cout << "Столько нет. Могу предложить только " << shop.meat_count << endl;
+			SetColor(15, 0);
+			GotoXY(32, 23); system("pause");
 		}
 
 	}break;
 	case 3:
 	{
-		/*if (shop.lemonade_count == 0) { cout << "Больше нет, приходи завтра, может, завезут" << endl; system("pause"); return 1; }
-		cout << "Сколько вам ?" << endl;
-		cout << "Ввод: "; enter_num(count);*/
+		if (shop.lemonade_count == 0) { shop.nothingLeft(); return 1; }
+		shop.ent_value(&count);
 
 		if (count * shop.lemonade_cost > pers.money)
 		{
@@ -124,16 +125,18 @@ bool to_buy(shopClass& shop, person& pers)
 		}
 		else
 		{
-			cout << "Столько нет. Могу предложить только " << shop.lemonade_count << endl;
-			system("pause");
+			SetColor(4, 0);
+			GotoXY(32, 22); cout << "Столько нет. Могу предложить только " << shop.lemonade_count << endl;
+			SetColor(15, 0);
+			GotoXY(32, 23); system("pause");
 		}
 
 	}break;
 	case 4:
 	{
-		/*if (shop.coffe_count == 0) { cout << "Больше нет, приходи завтра, может, завезут" << endl; system("pause"); return 1; }
-		cout << "Сколько вам ?" << endl;
-		cout << "Ввод: "; enter_num(count);*/
+		if (shop.coffe_count == 0) { shop.nothingLeft(); return 1; }
+		
+		shop.ent_value(&count);
 
 		if (count * shop.coffe_cost > pers.money)
 		{
@@ -152,16 +155,17 @@ bool to_buy(shopClass& shop, person& pers)
 		}
 		else
 		{
-			cout << "Столько нет. Могу предложить только " << shop.coffe_count << endl;
-			system("pause");
+			SetColor(4, 0);
+			GotoXY(32, 22); cout << "Столько нет. Могу предложить только " << shop.coffe_count << endl;
+			SetColor(15, 0);
+			GotoXY(32, 23); system("pause");
 		}
 
 	}break;
 	case 5:
 	{
-		/*if (shop.yogurt_count == 0) { cout << "Больше нет, приходи завтра, может, завезут" << endl; system("pause"); return 1; }
-		cout << "Сколько вам ?" << endl;
-		cout << "Ввод: "; enter_num(count);*/
+		if (shop.yogurt_count == 0) { shop.nothingLeft(); return 1; }
+		shop.ent_value(&count);
 
 		if (count * shop.yogurt_cost > pers.money)
 		{
@@ -180,8 +184,10 @@ bool to_buy(shopClass& shop, person& pers)
 		}
 		else
 		{
-			cout << "Столько нет. Могу предложить только " << shop.yogurt_count << endl;
-			system("pause");
+			SetColor(4, 0);
+			GotoXY(32, 22); cout << "Столько нет. Могу предложить только " << shop.yogurt_count << endl;
+			SetColor(15, 0);
+			GotoXY(32, 23); system("pause");
 		}
 
 	}break;
@@ -224,6 +230,11 @@ bool isGameLost(person& pers, shopClass& shop, BankClass& bank)
 	pers.isHungry = 1;
 
 	return true;
+}
+
+void nothingLeft()
+{
+
 }
 
 
